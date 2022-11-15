@@ -1,0 +1,44 @@
+form {
+  border: 5px solid rgb(53, 118, 203);
+  width: 30vw;
+  border-radius: 10px;
+  padding: 20px;
+  margin: auto;
+}
+
+form input {
+  /* display: block; */
+  margin: 5px 0;
+  width: 100px;
+  transition: width 1s;
+}
+
+.right {
+  text-align: right;
+}
+
+.top {
+  vertical-align: top;
+}
+
+input:focus {
+  width: 250px;
+  transition: width 1s;
+}
+
+button {
+  background-color: rgb(53, 118, 203);
+  padding: 20px;
+  border-radius: 10px;
+  border: 2px solid white;
+  color: white;
+  font-weight: bold;
+  transition: 1s;
+}
+button:hover {
+  cursor: pointer;
+  background-color: white;
+  color: rgb(53, 118, 203);
+  border: 2px solid rgb(53, 118, 203);
+  transition: 2s;
+}

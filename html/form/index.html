@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./style.css" rel="stylesheet" />
+    <title>Form</title>
+  </head>
+  <body>
+    <h1>General Information</h1>
+    <form action="">
+      <label for="name">
+        <span>Name:</span>
+        <input type="text" placeholder="Your name" id="name" />
+      </label>
+      <br />
+
+      <label for="male">
+        <input id="male" type="radio" name="sex" />
+        <span>Male</span>
+      </label>
+
+      <label for="female">
+        <input id="female" type="radio" name="sex" />
+        <span>Female</span>
+      </label>
+
+      <label for="other"></label>
+      <input id="other" type="radio" name="sex" />
+      <span>Other</span>
+      <br />
+
+      <label for="">
+        <span>Class:</span>
+        <select name="" id="select">
+          <option value="1">Aqua</option>
+          <option value="2">Orange</option>
+          <option value="3">Black</option>
+        </select>
+      </label>
+      <br />
+      <span>Phone number: </span>
+      <input
+        type="phone"
+        placeholder="Your phone number"
+        minlength="8"
+        maxlength="8"
+      /><br />
+      <span>E-mail: </span>
+      <input type="email" placeholder="Your e-mail" /><br />
+      <input type="password" placeholder="Your password" /><br />
+      <label for="">
+        <input type="checkbox" />
+        <span>First</span> </label
+      ><br />
+      <label for="">
+        <input type="checkbox" />
+        <span>Second</span> </label
+      ><br />
+      <textarea name="" id="" cols="30" rows="10"></textarea>
+      <input type="date" /><br />
+      <button>Register</button>
+      <!-- <button disabled>Register</button> -->
+      <input type="reset" value="Reset form" />
+    </form>
+  </body>
+</html>
