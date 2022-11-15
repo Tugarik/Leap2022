@@ -1,0 +1,45 @@
+div {
+  margin: auto;
+}
+
+@media screen and (min-width: 1400px) {
+  .xl,
+  .lg,
+  .md,
+  .sm,
+  .xs {
+    display: none;
+  }
+  body {
+    background-color: rgb(224, 111, 141);
+    text-align: center;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .xxl,
+  .lg,
+  .md,
+  .sm,
+  .xs {
+    display: none;
+  }
+  body {
+    background-color: rgb(255, 0, 0);
+    text-align: center;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .xxl,
+  .lg,
+  .md,
+  .sm,
+  .xs {
+    display: none;
+  }
+  body {
+    background-color: rgb(255, 0, 0);
+    text-align: center;
+  }
+}

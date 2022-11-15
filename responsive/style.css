@@ -1,0 +1,30 @@
+body {
+  background-color: aqua;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+}
+
+ul {
+  display: flex;
+  list-style: none;
+  gap: 10px;
+}
+
+@media screen and (max-width: 600px) {
+  header {
+    display: block;
+  }
+  body {
+    background-color: azure;
+  }
+}
+@media screen and (max-width: 400px) {
+  h1 {
+    font-size: medium;
+  }
+  ul {
+    display: block;
+  }
+}
