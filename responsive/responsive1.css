@@ -1,14 +1,13 @@
 div {
-  text-align: center;
   display: none;
   font-size: 40px;
 }
 
 .container {
-  display: block;
-  text-align: center;
-  height: 20vh;
-  border: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
 
 .xs {
