@@ -1,30 +1,116 @@
+/* Desktop, Laptop */
+
 body {
-  background-color: aqua;
+  margin: 0;
 }
-header {
+
+.container {
+  width: 95%;
+  max-width: 1280px;
+  margin: auto;
+}
+.flex {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+.flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+.logo {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.name {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+header {
+  justify-content: space-between;
+  background-color: navy;
+  color: #fff;
+}
+
+.menus {
+  list-style: none;
+  gap: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+button {
+  font-size: 25px;
+  border-radius: 5px;
+}
+.btn {
+  text-align: right;
+}
+
+main {
+  padding: 20px 0;
+  background-color: bisque;
+  align-items: flex-end;
+}
+aside {
+  width: 30%;
+  height: 100%;
+  background-color: aquamarine;
+  padding: 20px;
+}
+.aside-img {
+  width: 100%;
+}
+
+.section {
+  width: 60%;
 }
 
 ul {
-  display: flex;
   list-style: none;
-  gap: 10px;
+}
+section {
+  background-color: beige;
+  padding: 20px;
 }
 
-@media screen and (max-width: 600px) {
-  header {
-    display: block;
-  }
+footer {
+  background-color: rgb(47, 46, 46);
+  color: #fff;
+  height: 100px;
+}
+/* Tablet */
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
   body {
     background-color: azure;
   }
 }
-@media screen and (max-width: 400px) {
-  h1 {
-    font-size: medium;
+
+/* Mobile */
+@media screen and (max-width: 480px) {
+  .container {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-bottom: 20px;
+    gap: 10px;
   }
-  ul {
-    display: block;
+  .name,
+  .btn {
+    width: 40%;
+    min-width: 140px;
+  }
+
+  .menus {
+    width: 100%;
+    flex-wrap: wrap;
+    order: 1;
   }
 }

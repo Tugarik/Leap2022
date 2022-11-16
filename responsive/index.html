@@ -9,23 +9,73 @@
   </head>
   <body>
     <header>
-      <h1>My Responsive Website</h1>
-      <nav>
-        <ul>
+      <div class="container flex">
+        <div class="name">
+          <img src="https://picsum.photos/50/50" alt="logo" class="logo" />
+          <h1>COMPANY</h1>
+        </div>
+        <ul class="menus">
           <li>Menu</li>
           <li>Contact</li>
           <li>About Me</li>
           <li>Location</li>
           <li>Others</li>
         </ul>
-      </nav>
+        <div class="btn">
+          <button>Button</button>
+        </div>
+      </div>
     </header>
 
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur
-      dignissimos alias error minima saepe consectetur incidunt nisi nam libero
-      facere, cum nesciunt distinctio eaque provident! Lorem ipsum dolor sit
-      amet consectetur adipisicing elit. Atque, magni?
-    </p>
+    <main class="container flex-wrap">
+      <aside>
+        <img
+          src="https://picsum.photos/500/300"
+          alt="aside image"
+          class="aside-img"
+        />
+        <ul>
+          <li>Link 1</li>
+          <li>Link 2</li>
+          <li>Link 3</li>
+        </ul>
+      </aside>
+      <div class="section flex">
+        <section>
+          <article>
+            <h3>Article Title 1</h3>
+            <img src="https://picsum.photos/200/100" alt="article-img1" />
+          </article>
+          <article>
+            <h3>Article Title 2</h3>
+            <img src="https://picsum.photos/200/100" alt="article-img2" />
+          </article>
+          <article>
+            <h3>Article Title 3</h3>
+            <img src="https://picsum.photos/200/100" alt="article-img3" />
+          </article>
+          <article>
+            <h3>Article Title 4</h3>
+            <img src="https://picsum.photos/200/100" alt="article-img4" />
+          </article>
+        </section>
+        <section>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur
+            dignissimos alias error minima saepe consectetur incidunt nisi nam
+            libero facere, cum nesciunt distinctio eaque provident! Lorem ipsum
+            dolor sit amet consectetur adipisicing elit. Atque, magni?
+          </p>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <div class="container flex">
+        <div>Footer text 1</div>
+        <div>Footer text 1</div>
+        <div>Footer text 1</div>
+      </div>
+    </footer>
   </body>
 </html>
