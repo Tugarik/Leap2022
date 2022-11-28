@@ -158,8 +158,7 @@ console.log("=============================");
 
 // 21 Гараас дугуйн радиус
 
-// let radiusCircle = prompt("Duguin radius oruulna uu");
-let radiusCircle = 5;
+let radiusCircle = prompt("Duguin radius oruulna uu");
 let areaCircle = PI * radiusCircle * radiusCircle;
 let lengthCircle = 2 * PI * radiusCircle;
 console.log("Area of circle is: " + areaCircle);
