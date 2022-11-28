@@ -77,17 +77,17 @@ let m = (y2 - y1) / (x2 - x1);
 console.log("m = y2-y1/x2-x1");
 console.log(
   "x1 = " +
-    x1 +
-    ", " +
-    "x2 = " +
-    x2 +
-    ", " +
-    "y1 = " +
-    y1 +
-    ", " +
-    "y2 = " +
-    y1 +
-    " ued"
+  x1 +
+  ", " +
+  "x2 = " +
+  x2 +
+  ", " +
+  "y1 = " +
+  y1 +
+  ", " +
+  "y2 = " +
+  y1 +
+  " ued"
 );
 console.log("m = " + m);
 console.log("=============================");
@@ -110,7 +110,8 @@ console.log("=============================");
 // 16 Gurvaljingiin talbai
 let s = (side1 + side2 + side3) / 2;
 let triangleArea = Math.sqrt(s * (s - side1) * (s - side2) * (s - side3));
-console.log("Area of a triangle is: " + triangleArea);
+console.log("If triangle sides are: " + side1 + ", " + side2 + " and " + side3);
+console.log("Then Area of a\the triangle is: " + triangleArea);
 console.log("=============================");
 
 // 17 Celcius to Fahrenheit
@@ -156,7 +157,9 @@ console.log(lenI + " inches = " + lenC + " centimeters");
 console.log("=============================");
 
 // 21 Гараас дугуйн радиус
-let radiusCircle = prompt("Duguin radius oruulna uu");
+
+// let radiusCircle = prompt("Duguin radius oruulna uu");
+let radiusCircle = 5;
 let areaCircle = PI * radiusCircle * radiusCircle;
 let lengthCircle = 2 * PI * radiusCircle;
 console.log("Area of circle is: " + areaCircle);
@@ -173,3 +176,79 @@ let num3d2 = (num3d - (num3d % 10)) / 10;
 let firstDigit2 = (num3d2 - (num3d2 % 10)) / 10;
 console.log("First digit of " + num3d + " is: " + firstDigit2);
 console.log("=============================");
+
+// 23 Baby shark
+let v1 = "Baby Shark", 
+    v2 = "Mommy Shark",
+    v3 = "Daddy Shark",
+    v4 = "Grandma Shark",
+    v5 = "Grandpa Shark",
+    v6 = "Let's go hunt",
+    v7 = "Run away",
+    v8 = "Safe at last",
+    v9 = "It`s the end",
+    v10 = ", doo-doo"
+    v11 = " (ah!)",
+    v12 = " (phew)";
+console.log(v1 + v10 + v10);
+console.log(v1 + v10 + v10);
+console.log(v1 + v10 + v10);
+console.log(v1);
+console.log("");
+console.log(v2 + v10 +  v10);
+console.log(v2 + v10 +  v10);
+console.log(v2 + v10 +  v10);
+console.log(v2);
+console.log("");
+console.log(v3 + v10 +  v10);
+console.log(v3 + v10 +  v10);
+console.log(v3 + v10 +  v10);
+console.log(v3);
+console.log("");
+console.log(v4 + v10 +  v10);
+console.log(v4 + v10 +  v10);
+console.log(v4 + v10 +  v10);
+console.log(v4);
+console.log("");
+console.log(v5 + v10 +  v10);
+console.log(v5 + v10 +  v10);
+console.log(v5 + v10 +  v10);
+console.log(v5);
+console.log("");
+console.log(v6 + v10 +  v10);
+console.log(v6 + v10 +  v10);
+console.log(v6 + v10 +  v10);
+console.log(v6);
+console.log("");
+console.log(v7 + v10 +  v10);
+console.log(v7 + v10 +  v10);
+console.log(v7 + v10 +  v10);
+console.log(v7 + v11);
+console.log("");
+console.log(v8 + v10 +  v10);
+console.log(v8 + v10 +  v10);
+console.log(v8 + v10 +  v10);
+console.log(v8 + v12);
+console.log("");
+console.log(v9 + v10 +  v10);
+console.log(v9 + v10 +  v10);
+console.log(v9 + v10 +  v10);
+console.log(v9);
+console.log("");
+console.log("=============================");
+
+// 24 Bairnii une
+let price1 = 300;
+let price3 = 780;
+let price5 = 1100;
+
+let inputSize = 24;
+
+let amount5 = Math.floor(inputSize / 5);
+let amount3 = Math.floor((inputSize - amount5 * 5)/3);
+let amount1 = (inputSize - amount5 * 5) % 3;
+console.log("Niit talbai " + inputSize + " m.kv gevel:")
+console.log(amount5 + " * " + price5);
+console.log(amount3 + " * " + price3);
+console.log(amount1 + " * " + price1);
+console.log(amount5 * price5 + amount3 * price3 + amount1 * price1 + " USD in Total");
