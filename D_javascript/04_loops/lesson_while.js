@@ -120,16 +120,11 @@ do {
   }
 
   y = 0;
-  while (y < x + 1) {
+  while (y < 2 * x - 1) {
     output += "*" + " ";
     y++;
   }
 
-  y = 0;
-  while (y < x) {
-    y++;
-    output += "*" + " ";
-  }
 
   output += "\n";
   x++;
