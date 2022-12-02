@@ -1,4 +1,4 @@
-check phone
+//check phone
 
 let number;
 
@@ -12,4 +12,3 @@ while (true) {
 }
 
 console.log("Access granted");
-
