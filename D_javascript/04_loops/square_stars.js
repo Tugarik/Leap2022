@@ -1,46 +1,24 @@
 let n = Number(prompt("Too orulna uu"));
 // n = 5;
-output = "";
-x = 0;
+newStr = "";
+for (let i = 1; i <= n; i++) {
+  if (i == 1 || i == n) {
+    for (let j = 1; j <= n; j++) {
+      newStr += "* ";
+    }
+  } else {
+    for (let j = 1; j <= 1; j++) {
+      newStr += "* ";
+    }
 
-// ehnii mur
-y = 0;
-while (y < n) {
-   output += "*" + " ";
-   y++;
+    for (let j = 1; j <= n - 2; j++) {
+      newStr += "  ";
+    }
+    for (let j = 1; j <= 1; j++) {
+      newStr += "* ";
+    }
+  }
+
+  newStr += "\n";
 }
-output += "\n";
-
-//dund heseg
-
-do {
-   y = 0;
-   while (y < 1) {
-      output += "*" + " ";
-      y++;
-   }
-   
-   z = 0;
-   while (z < n - 2) {
-      output += "-" + " ";
-      z++;
-   }
-
-   y = 0;
-   while (y < 1) {
-      output += "*" + " ";
-      y++;
-   }
-
-   output += "\n";
-   x++;
-} while (x < n-2);
-
-// suuliin mur
-y = 0;
-while (y < n) {
-   output += "*" + " ";
-   y++;
-}
-
-console.log(output);
+console.log(newStr);
