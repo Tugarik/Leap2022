@@ -1,11 +1,7 @@
 let num = 5;
-function factorial(n) {
-  if (n == 1) {
-    return 1;
-  } else {
-    let result = n * factorial(n - 1);
-    return result;
-  }
+const factorial =(n) => {
+  if (n == 1) return 1;
+  return n * factorial(n - 1);
 }
 
-console.log(factorial(num));
+console.log(`${num}! = ${factorial(num)}`);
