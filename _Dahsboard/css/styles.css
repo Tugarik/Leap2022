@@ -1,0 +1,50 @@
+body {
+   margin: 0;
+   background-image: url("../images/dash.jpg");
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+}
+
+.sidebar-link {
+   display: flex;
+   align-items: center;
+}
+
+.sidebar-link[aria-expanded="true"] .right-icon {
+   transform: rotate(180deg);
+   transition: all ease 0.25s;
+}
+
+:root {
+   --offcanvas-width: 300px;
+   --topNavbarHeight: 56px;
+
+}
+
+.sidebar-nav {
+   width: var(--offcanvas-width);
+}
+
+
+
+@media (min-width: 992px) {
+   body {
+      overflow: auto !important;
+   }
+
+   .offcanvas-backdrop::before {
+      display: none;
+   }
+
+   .offcanvas.offcanvas-header.btn-close {
+      display: none;
+   }
+
+   .sidebar-nav {
+      transform: none;
+      visibility: visible !important;
+      top: var(--topNavbarHeight);
+      height: calc(100% - var(--topNavbarHeight));
+   }
+}
