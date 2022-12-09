@@ -102,11 +102,15 @@ function printOne(inp) {
 function getSuperior(inp) {
   let superman;
   let temp = [];
-  for (i = 0; i < inp.length-1; i++) {
+  for (i = 0; i < inp.length - 1; i++) {
     temp.push(inp[i].skills.length);
   }
   superman = inp[temp.indexOf(Math.max(...temp))].name;
-  console.log(`"${superman}" is a most skilled person. He has ${Math.max(...temp)} skills.`);
+  console.log(
+    `"${superman}" is a most skilled person. He has ${Math.max(
+      ...temp
+    )} skills.`
+  );
   console.log("-----------------------------");
 }
 
@@ -122,7 +126,9 @@ function getCount(inp) {
       over50++;
     }
   }
-  console.log(`${logs} users are logged in.\n${over50} users have over 50 points.`);
+  console.log(
+    `${logs} users are logged in.\n${over50} users have over 50 points.`
+  );
   console.log("-----------------------------");
 }
 
@@ -133,11 +139,13 @@ function getOldest(inp) {
     temp.push([inp[i].name, inp[i].age]);
   }
 
-  temp.sort(function(a, b) {
+  temp.sort(function (a, b) {
     return b[1] - a[1];
   });
 
-  console.log(`"${temp[0][0]} (${temp[0][1]} years)", "${temp[1][0]} (${temp[1][1]} years)" and "${temp[2][0]} (${temp[2][1]} years)" are most old people.`);
+  console.log(
+    `"${temp[0][0]} (${temp[0][1]} years)", "${temp[1][0]} (${temp[1][1]} years)" and "${temp[2][0]} (${temp[2][1]} years)" are most old people.`
+  );
   console.log("-----------------------------");
 }
 
@@ -145,13 +153,13 @@ function getOldest(inp) {
 function getMern(inp) {
   temp = [];
   for (i = 0; i < inp.length; i++) {
-
     if (
       inp[i].skills.includes("MongoDB") &&
       inp[i].skills.includes("Express") &&
       inp[i].skills.includes("React") &&
-      inp[i].skills.includes("Node") ) {
-        temp.push(inp[i].name);
+      inp[i].skills.includes("Node")
+    ) {
+      temp.push(inp[i].name);
     }
   }
   console.log(`${temp} are MERN developers.`);
