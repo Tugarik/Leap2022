@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Dashboard</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css"
+    />
+
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body>
+    <!-- sidebar start -->
+    <div
+      class="offcanvas offcanvas-start sidebar-nav"
+      tabindex="-1"
+      id="offcanvasExample"
+      aria-labelledby="offcanvasExampleLabel"
+    >
+      <div class="offcanvas-body">
+        <nav class="navbar-light">
+          <ul class="navbar-nav">
+            <div class="text-muted fw-bold text-uppercase px-3">BI DATA</div>
+            <li>
+              <a href="#" class="nav-link px-3 bg-secondary active text-white">
+                <span class="me-2"><i class="bi bi-speedometer2"></i></span>
+                <span>Dashboard</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider" />
+            </li>
+
+            <div class="text-muted fw-bold text-uppercase px-3">MANAGEMENT</div>
+            <li>
+              <a href="#" class="nav-link px-3">
+                <span class="me-2"><i class="bi bi-calendar3"></i></span>
+                <span>To Do</span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="nav-link px-3 sidebar-link"
+                data-bs-toggle="collapse"
+                href="#collapseExample"
+                role="button"
+                aria-expanded="false"
+                aria-controls="collapseExample"
+              >
+                <span class="me-2"><i class="bi bi-layout-split"></i></span>
+                <span>Notification</span>
+                <span class="right-icon ms-auto"
+                  ><i class="bi bi-chevron-down"></i
+                ></span>
+              </a>
+              <div class="collapse" id="collapseExample">
+                <div class="card card-body bg-secondary">
+                  Some placeholder content for the collapse component. This
+                  panel is hidden by default but revealed when the user
+                  activates the relevant trigger.
+                </div>
+              </div>
+            </li>
+
+            <li>
+              <a href="#" class="nav-link px-3">
+                <span class="me-2"><i class="bi bi-webcam"></i></span>
+                <span>Meeting Room</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider" />
+            </li>
+
+            <div class="text-muted fw-bold text-uppercase px-3">ADDONS</div>
+
+            <li>
+              <a href="#" class="nav-link px-3">
+                <span class="me-2"><i class="bi bi-calendar3"></i></span>
+                <span>Calendar</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="nav-link px-3">
+                <span class="me-2"><i class="bi bi-graph-up-arrow"></i></span>
+                <span>Charts</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="nav-link px-3">
+                <span class="me-2"><i class="bi bi-table"></i></span>
+                <span>Tables</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider" />
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+    <!-- sidebar end -->
+
+    <!-- main start -->
+    <main class="indent-for-sidebar p-3">
+      <div class="container">
+        <!-- header start -->
+        <nav class="navbar navbar-light bg-light shadow">
+          <div class="container-fluid">
+            <!-- Offcanvas trigger button -->
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#offcanvasExample"
+              aria-controls="offcanvasExample"
+            >
+              <span
+                class="navbar-toggler-icon"
+                data-bs-target="offcanvasExample"
+              ></span>
+            </button>
+            <!-- Offcanvas trigger button -->
+
+            <a class="navbar-brand fw-bold me-auto ps-3" href="#"
+              ><i class="logo me-2 bi bi-hospital"></i>COMPANY</a
+            >
+
+            <form class="d-flex ms-auto">
+              <div class="input-group mb-2 mb-lg-0 mt-2 mt-lg-0">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Search"
+                  aria-label="Recipient's username"
+                  aria-describedby="button-addon2"
+                />
+                <button
+                  class="btn btn-primary"
+                  type="button"
+                  id="button-addon2"
+                >
+                  <i class="bi bi-search"></i>
+                </button>
+              </div>
+            </form>
+            <ul class="navbar-nav mb-2 mb-lg-0">
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="navbarDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <i class="bi bi-person-fill"></i>
+                </a>
+                <ul
+                  class="dropdown-menu dropdown-menu-end"
+                  aria-labelledby="navbarDropdown"
+                >
+                  <li><a class="dropdown-item" href="#">Administrator</a></li>
+                  <li><a class="dropdown-item" href="#">Role1</a></li>
+                  <li>
+                    <hr class="dropdown-divider" />
+                  </li>
+                  <li><a class="dropdown-item" href="#">Log out</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        <!-- header end -->
+
+        <div class="row pt-3">
+          <div class="col-lg-8 order-0 mb-4 card shadow">
+            <div class="row">
+              <div class="col-md-7">
+                <div class="card-title text-primary">
+                  Sain bn uu, zahiralaa!
+                </div>
+                <div class="card-body">
+                  You have done 72% more sales today. Check your new badge in
+                  your profile.
+                </div>
+              </div>
+              <div class="col-md-5 text-center">
+                <img
+                  src="./img/man-with-laptop-light.png"
+                  height="140"
+                  alt="image 1"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="card col-lg-4 col-md-4 order-1 mb-4 shadow">graph 2</div>
+          <div class="card col-lg-8 order-2 order-md-3 order-lg-2 mb-4 shadow">
+            graph 3
+          </div>
+          <div class="card col-lg-4 col-md-8 order-3 order-md-2 mb-4 shadow">
+            graph 4
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- main end -->
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./js/main.js"></script>
+  </body>
+</html>

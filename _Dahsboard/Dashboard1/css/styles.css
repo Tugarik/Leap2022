@@ -28,6 +28,7 @@ body {
 
 
 
+
 @media (min-width: 992px) {
    body {
       overflow: auto !important;
@@ -36,9 +37,8 @@ body {
    .offcanvas-backdrop::before {
       display: none;
    }
-
-   .offcanvas.offcanvas-header.btn-close {
-      display: none;
+   .indent-for-sidebar {
+      margin-left: var(--offcanvas-width);
    }
 
    .sidebar-nav {
