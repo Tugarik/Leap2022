@@ -3,7 +3,7 @@ let newDiv = document.createElement("div");
 rootElement.appendChild(newDiv);
 newDiv.style.height = "200px";
 newDiv.style.width = "50px";
-newDiv.style.backgroundColor = "red";
+newDiv.style.backgroundColor = "rgb(255,0,0)";
 newDiv.style.opacity = "0.1";
 
 grow();
@@ -14,6 +14,7 @@ function grow() {
     i++;
     newDiv.style.width = `${i}px`;
     newDiv.style.opacity = `${i / 1000 + 0.5}`;
+    newDiv.style.backgroundColor = `rgb(255,${i/2},0)`;
     if (i == 500) {
       clearInterval(growInterval);
       shrink();
@@ -27,6 +28,7 @@ function shrink() {
     i--;
     newDiv.style.width = `${i}px`;
     newDiv.style.opacity = `${i / 1000 + 0.5}`;
+    newDiv.style.backgroundColor = `rgb(255,${i/2},50)`;
     if (i == 10) {
       clearInterval(shrinkInterval);
       grow();
