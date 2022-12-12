@@ -18,7 +18,7 @@ function grow() {
       clearInterval(growInterval);
       shrink();
     }
-  }, 10);
+  }, 1);
 }
 
 function shrink() {
@@ -31,5 +31,5 @@ function shrink() {
       clearInterval(shrinkInterval);
       grow();
     }
-  }, 10);
+  }, 1);
 }

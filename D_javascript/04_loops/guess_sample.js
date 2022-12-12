@@ -4,7 +4,7 @@ do {
   userGuess = Number(prompt(" too oruulna uu"));
   if (userGuess < random) {
     console.log("baga bn");
-  } else if (serGuess > random) {
+  } else if (userGuess > random) {
     console.log("ih bn");
   } else {
     console.log("taalaa");
