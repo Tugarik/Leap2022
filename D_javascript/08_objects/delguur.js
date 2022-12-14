@@ -31,6 +31,12 @@ function netSales(inp) {
    console.log(`--------------------------------------------------------------------`);
 }
 
+
+// array.sort( (a,b) => {
+//  b[i] - a[j]
+// })
+
+)
 function top5cash(inp, n) {
    for (let i = 0; i < inp.length; i++) {
       inp.sort((a,b) => {
