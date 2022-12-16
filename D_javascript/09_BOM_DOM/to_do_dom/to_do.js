@@ -12,41 +12,13 @@ let rootElement = document.getElementById("root");
 let container = newClass(rootElement, "div", "container-sm text-center");
 let header = newClass(container, "div", "header bg-info mb-5 mt-5");
 let appHeader = newClass(container, "h1", "appHeader");
-let statusField = newClass(
-  container,
-  "div",
-  "statusField d-flex justify-content-center my-5"
-);
-let dateCurrent = newClass(
-  statusField,
-  "div",
-  "dateCurrent bg-primary text-white fw-semibold p-3 rounded mx-2"
-);
-let statusCurrent = newClass(
-  statusField,
-  "div",
-  "statusCurrent bg-danger text-white fw-semibold p-3 rounded mx-2"
-);
-let doneCurrent = newClass(
-  statusField,
-  "div",
-  "doneCurrent bg-success text-white fw-semibold p-3 rounded mx-2"
-);
-let formField = newClass(
-  container,
-  "form",
-  "formField row  justify-space-between bg-light shadow"
-);
-let inputField = newClass(
-  formField,
-  "input",
-  "inputField p-3 pt-4 mb-2 border-0 bg-light col-9"
-);
-let addButton = newClass(
-  formField,
-  "div",
-  "btn p-3 pt-4 border-0 col-3 rounded-0 fw-semibold"
-);
+let statusField = newClass(container, "div", "statusField d-flex justify-content-center my-5");
+let dateCurrent = newClass(statusField, "div", "dateCurrent bg-primary text-white fw-semibold p-3 rounded mx-2");
+let doneCurrent = newClass(statusField, "div", "doneCurrent bg-success text-white fw-semibold p-3 rounded mx-2");
+let statusCurrent = newClass(statusField, "div", "statusCurrent bg-danger text-white fw-semibold p-3 rounded mx-2");
+let formField = newClass(container, "form", "formField row  justify-space-between bg-light shadow");
+let inputField = newClass(formField, "input", "inputField p-3 pt-4 mb-2 border-0 bg-light col-9");
+let addButton = newClass(formField, "div", "btn p-3 pt-4 border-0 col-3 rounded-0 fw-semibold");
 let headerField = newClass(container, "div", "headerField pt-5");
 let listHeader = newClass(headerField, "h2", "listHeader");
 let horizontal = newClass(container, "hr", "rule ");

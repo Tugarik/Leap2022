@@ -1,0 +1,22 @@
+* {
+   box-sizing: border-box;
+}
+
+.card {
+   height: 50vh;
+   font-size: 25px;
+   font-weight: 900;
+   color: #000000;
+}
+
+#input {
+   width: 80px;
+   outline: none;
+   text-align: center;
+}
+
+#clock {
+   min-width: 200px;
+   padding: 3px;
+   background-color: lightgrey;
+}

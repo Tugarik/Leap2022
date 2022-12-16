@@ -28,9 +28,12 @@ for (i = 0; i < document.querySelectorAll("button").length; i++) {
   document.querySelectorAll("button")[i].style.padding = "10px 20px";
 }
 
-document.querySelector(".start").addEventListener("click", startTimer);
-document.querySelector(".stop").addEventListener("click", stopTimer);
-document.querySelector(".reset").addEventListener("click", resetTimer);
+let startBtn = document.querySelector(".start");
+startBtn.addEventListener("click", startTimer);
+let stopBtn = document.querySelector(".stop");
+stopBtn.addEventListener("click", stopTimer);
+let resetBtn = document.querySelector(".reset");
+resetBtn.addEventListener("click", resetTimer);
 
 clock.innerText = `00 : 00 : 00 : 00`;
 let myInterval;
@@ -42,9 +45,8 @@ let ms = 0; //ms
 function startTimer() {
   myInterval = setInterval(function () {
     ms++;
-    clock.innerText = `${hr < 10 ? "0" : ""}${hr} : ${
-      mn < 10 ? "0" : ""
-    }${mn} : ${sc < 10 ? "0" : ""}${sc} : ${ms < 10 ? "0" : ""}${ms}`;
+    clock.innerText = `${hr < 10 ? "0" : ""}${hr} : ${mn < 10 ? "0" : ""
+      }${mn} : ${sc < 10 ? "0" : ""}${sc} : ${ms < 10 ? "0" : ""}${ms}`;
 
     if (ms == 60) {
       ms = 0;
@@ -58,13 +60,21 @@ function startTimer() {
       mn = 0;
       hr++;
     }
-  }, 20);
+  }, 17);
+  startBtn.disabled = true;
+  resetBtn.disabled = true;
 }
 
 function stopTimer() {
   clearInterval(myInterval);
+  startBtn.disabled = false;
+  resetBtn.disabled = false;
 }
 
 function resetTimer() {
   clock.innerText = `00 : 00 : 00 : 00`;
+  let hr = 0; //hour
+  let mn = 0; //min
+  let sc = 0; //sec
+  let ms = 0; //ms
 }
