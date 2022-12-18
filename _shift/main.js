@@ -1,13 +1,26 @@
-// Create a new array with input number elements
-let arrayByNum = [];
-let num = document.getElementById('input').value;
-for (i = 0; i < num; i++) {
-    arrayByNum.push(i);
-}
-console.log(arrayByNum);
+let array;
 
-// Function for shuffle an array 
-function shuffle(arr) {
+//next button listens input field for change and generate array
+let input = document.getElementById('input');
+let screenText = document.getElementById('screen');
+let nextBtn = document.getElementById('next');
+
+nextBtn.addEventListener('click', func);
+function func() {
+    num = input.value;
+    array = shuffle(num);
+    screenText.innerText = `let array = [${array}];`;
+};
+
+// Function for generate and shuffle an array 
+function shuffle(num) {
+
+    // Create a new array with input number elements
+    let arr = [];
+    for (i = 0; i < num; i++) {
+        arr.push(i);
+    }
+
     let currentIndex = arr.length, randomIndex;
 
     // While there remain elements to shuffle.
@@ -22,29 +35,4 @@ function shuffle(arr) {
             arr[randomIndex], arr[currentIndex]];
     }
     return arr;
-}
-
-let array = shuffle(arrayByNum);
-console.log(array);
-
-
-
-// document.addEventListener('change', getNum);
-
-let input = document.getElementById('input');
-input.addEventListener('change', getInput);
-function getInput() {
-    num = document.getElementById('input').value;
-    console.log(num);
-    return num;
-}
-let content;
-let screen = document.getElementById('screen');
-let nextBtn = document.getElementById('next');
-nextBtn.addEventListener('click', nextPage);
-
-function nextPage() {
-    input.addEventListener('change', getInput);
-    content = `let array = [${array}];`;
-    screen.innerText = content;
 }
