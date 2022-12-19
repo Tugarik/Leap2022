@@ -58,7 +58,7 @@ addButton.style.color = "#ffffff";
 addButton.addEventListener("click", doAdd);
 
 // function to add a new task
-function doAdd() {
+fu ction doAdd() {
 
   //create a status window
   counter++;
