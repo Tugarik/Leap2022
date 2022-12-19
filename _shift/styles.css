@@ -9,14 +9,24 @@
    color: #000000;
 }
 
-#input {
+#input, #score {
    width: 80px;
    outline: none;
    text-align: center;
+   border-radius: 5px;
+   background-color: lightgrey;
 }
 
 #clock {
    min-width: 200px;
    padding: 3px;
    background-color: lightgrey;
+}
+ #score {
+   font-size: 22px;
+ }
+
+
+#next, #score, #plusScore {
+   display: none;
 }

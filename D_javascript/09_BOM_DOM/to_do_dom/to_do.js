@@ -58,7 +58,7 @@ addButton.style.color = "#ffffff";
 addButton.addEventListener("click", doAdd);
 
 // function to add a new task
-fu ction doAdd() {
+function doAdd() {
 
   //create a status window
   counter++;
@@ -122,6 +122,11 @@ fu ction doAdd() {
     } else {
       doneCurrent.style.display = "block";
     }
+    if (counter == 0) {
+      statusCurrent.style.display = 'none';
+    }  else {
+      statusCurrent.style.display = 'block';
+    }
   });
 
   //create del button
@@ -146,3 +151,4 @@ fu ction doAdd() {
     }
   });
 }
+

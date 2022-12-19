@@ -28,11 +28,14 @@
               <span id = "screen" class="card-text text-dark">Welcome!</span>
             </code>
           </div>
-          <button id = "next" class="btn btn-primary rounded-0">Next</button>
+          <div class="card-footer bg-primary d-flex align-items-center justify-content-center">
+            <input id = "score" class="mx-2" placeholder="0" disabled></input>
+            <button id = "plusScore" class="btn btn-info mx-2">+</button>
+            <button id = "next" class="btn btn-info mx-2">Next</button>
+            <button id = "generate" class="btn btn-info mx-2">Generate</button>
+          </div>
         </div>
-        <div
-          class="statusBar mt-3 d-flex flex-wrap justify-content-center justify-content-center-md"
-        >
+        <div class="statusBar mt-3 d-flex flex-wrap justify-content-center justify-content-center-md">
           <div class="d-flex flex-wrap mt-3 me-md-3 justify-content-center">
             <div class="p-2">Participants</div>
             <input id="input" class="input p-2" type="number" value="20"/>
@@ -52,7 +55,7 @@
             </div>
           </div>
         </div>
-      </div>
+      
       <div class="footer bg-info rounded p-2 mt-4 shadow">
         All rights reserved 2022
       </div>
