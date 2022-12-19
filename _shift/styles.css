@@ -27,6 +27,6 @@
  }
 
 
-#next, #score, #plusScore {
+#next, #answer, #score, #plusScore, #minusScore {
    display: none;
 }

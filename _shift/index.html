@@ -17,8 +17,8 @@
   <body class="bg-light">
     <div class="container-md text-center my-3">
       <div class="header bg-info p-2 shadow rounded">
-        <h1><strong>.shift() game</strong></h1>
-        <span class="text-white">by Aquanauts (Pinecone Academy)</span>
+        <p class="fs-1"><strong>.shift() game</strong></p>
+        <span class="fs-4 text-dark"><strong>Aquanauts Team {diving.into.coding} Pinecone Academy</strong></span>
       </div>
       <div class="main my-3">
         <div class="card text-center shadow">
@@ -29,16 +29,18 @@
             </code>
           </div>
           <div class="card-footer bg-primary d-flex align-items-center justify-content-center">
+            <button id = "minusScore" class="btn btn-info mx-2">-</button>
             <input id = "score" class="mx-2" placeholder="0" disabled></input>
             <button id = "plusScore" class="btn btn-info mx-2">+</button>
             <button id = "next" class="btn btn-info mx-2">Next</button>
+            <button id = "answer" class="btn btn-info mx-2">Answer</button>
             <button id = "generate" class="btn btn-info mx-2">Generate</button>
           </div>
         </div>
         <div class="statusBar mt-3 d-flex flex-wrap justify-content-center justify-content-center-md">
           <div class="d-flex flex-wrap mt-3 me-md-3 justify-content-center">
             <div class="p-2">Participants</div>
-            <input id="input" class="input p-2" type="number" value="20"/>
+            <input id="input" class="input p-2" type="number"/>
           </div>
           <div class=" d-flex flex-wrap justify-content-center align-content-center">
             <div id="clock" class="clock mt-3 p-2 mx-sm-2 text-center rounded fw-bold shadow"></div>

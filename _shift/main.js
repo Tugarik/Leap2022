@@ -1,34 +1,100 @@
-let array;
-let score = 0;
-//next button listens input field for change and generate array
+
+
 let input = document.getElementById('input');
 let screenText = document.getElementById('screen');
 let genBtn = document.getElementById('generate');
 let nextBtn = document.getElementById('next');
+let answerBtn = document.getElementById('answer');
 let plusBtn = document.getElementById('plusScore');
+let minusBtn = document.getElementById('minusScore');
 let sumScore = document.querySelector('#score');
+let num;
+let array;
+let slides;
+
+input.addEventListener('change', func);
+function func() {
+    array = shuffle(input.value); 
+    console.log(array);
+    input.disabled = true;
+}
+
+
+let score = 0;
+let indexSlide = 0;
 
 genBtn.addEventListener('click', genArray);
 function genArray() {
-    num = input.value;
-    array = shuffle(num);
+
     screenText.innerText = `let array = [${array}];`;
     genBtn.style.display = 'none';
     nextBtn.style.display = 'block';
     plusBtn.style.display = 'block';
-    sumScore.style.display = 'block'; 
+    minusBtn.style.display = 'block';
+    sumScore.style.display = 'block';
+
+    // tasks and answers setup
+    let task1 = 'array.shift()';
+    array.shift();
+    let answer1 = `Answer:\n[${array}];`;
+
+    let task2 = 'array.pop()';
+    array.pop();
+    let answer2 = `Answer:\n[${array}];`;
+
+    let task3 = 'array.push("bagsh1")';
+    array.push('bagsh1');
+    let answer3 = `Answer:\n[${array}];`;
+
+    slides = [
+        {task: task1, answer: answer1},
+        {task: task2, answer: answer2},
+        {task: task3, answer: answer3},
+        {task: 'slide4task', answer: 'slide4answer'},
+        {task: 'slide5task', answer: 'slide5answer'},
+    ];
 };
 
-plusBtn.addEventListener('click', getScore)
-function getScore() {
+plusBtn.addEventListener('click', addScore)
+function addScore() {
     score ++;
     sumScore.value = score;
 }
 
+minusBtn.addEventListener('click', minusScore)
+function minusScore() {
+    score --;
+    sumScore.value = score;
+}
+
+
 nextBtn.addEventListener('click', goNext);
 function goNext() {
-    screenText.innerText = `slide 1`;
+    
+    if (indexSlide == slides.length) {
+        screenText.innerText = 'Thank you!';
+        stopTimer();
+    } else {
+        screenText.innerText = slides[indexSlide].task;
+        nextBtn.style.display = 'none';
+        answerBtn.style.display = 'block';
+        plusBtn.disabled = true;
+        minusBtn.disabled = true;
+    }
 }
+
+answerBtn.addEventListener('click', answerMe);
+function answerMe() {
+    screenText.innerText = slides[indexSlide].answer;
+    nextBtn.style.display = 'block';
+    answerBtn.style.display = 'none';
+    plusBtn.disabled = false;
+    minusBtn.disabled = false; 
+    indexSlide++;
+}
+
+
+
 
 // Function for generate and shuffle an array 
 function shuffle(num) {
