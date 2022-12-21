@@ -1,0 +1,71 @@
+// function fryEgg() {
+//     return 1;
+// }
+
+// console.log(fryEgg());
+
+// async function asyncfryEgg() {
+//     let promise = new Promise((resolve, reject) => {
+//         setTimeout(() => resolve('Done!'), 2000)
+//     })
+//     return 10;
+// }
+
+// console.log(asyncfryEgg());
+
+
+// function prepare_breakfast() {
+//     let coffee_promise = new Promise((resolve, reject) => resolve("coffee ready"));
+//     let egg_promise = new Promise((resolve, reject) => {
+//         console.log('start boil egg ...')
+//         setTimeout(() => {
+//             resolve("egg is ready");
+//         }, 5000);
+//     });
+//     egg_promise.then((res) => console.log(res));
+
+
+//     let toast_promise = new Promise((resolve, reject) => {
+//         console.log('preparing toast...')
+//         setTimeout(() => {
+//             resolve("toast is ready");
+//         }, 2000);
+//         console.log('toast confirmed');
+//     });
+//     toast_promise.then((res) => console.log(res));
+
+//     let combined_promise = Promise.all([coffee_promise, egg_promise, toast_promise]);
+//     return combined_promise;
+// }
+
+// async function morning() {
+//     let result = await prepare_breakfast();
+//     console.log(result);
+//     console.log('breakfast is ready');
+// }
+
+// morning();
+
+
+//custom delay function
+const delay = ms => {
+    return new Promise(r => setTimeout(() => r(), ms))
+}
+
+
+function f1() {
+    console.log('f1 started');
+    // delay(2000).then(() => { console.log('f1 finished'); return 1; });
+    return 1;
+}
+console.log(f1());
+
+function f2() {
+    console.log('f2 started');
+    delay(1000).then(() => { console.log('f2 finished') });
+
+}
+
+
+f1();
+f2();
