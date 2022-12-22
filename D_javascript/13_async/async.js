@@ -1,9 +1,28 @@
-// function fryEgg() {
-//     return 1;
-// }
+//async function returns Promise
+/**
+async function fryEgg() {
+    return 1;
+}
+fryEgg().then((res) => { console.log(res) })
+*/
 
-// console.log(fryEgg());
+//await commandgui turshaad uzeerei
+/*
+async function fryEgg() {
+    let promise = new Promise((resolve, reject) => {
+        setTimeout(() => resolve("done!"), 1000)
+    });
+    let result = await promise; // энд 1 сэкүнд хүлээнэ
+    console.log(result);
+}
+console.log("a");
+console.log("b");
+fryEgg();
+console.log("final");
+*/
 
+
+// await baihgui ued js flow shuud algasaad console commandiig turuulj ajilluulj bn
 // async function asyncfryEgg() {
 //     let promise = new Promise((resolve, reject) => {
 //         setTimeout(() => resolve('Done!'), 2000)
@@ -30,7 +49,7 @@
 //         setTimeout(() => {
 //             resolve("toast is ready");
 //         }, 2000);
-//         console.log('toast confirmed');
+//         console.log('toast finished');
 //     });
 //     toast_promise.then((res) => console.log(res));
 
@@ -48,24 +67,45 @@
 
 
 //custom delay function
-const delay = ms => {
-    return new Promise(r => setTimeout(() => r(), ms))
-}
+// const delay = ms => {
+//     return new Promise(r => setTimeout(() => r(), ms))
+// }
 
 
-function f1() {
-    console.log('f1 started');
-    // delay(2000).then(() => { console.log('f1 finished'); return 1; });
-    return 1;
-}
-console.log(f1());
+// function f1() {
+//     console.log('f1 started');
+//     delay(2000).then(() => { console.log('f1 finished') });
 
-function f2() {
-    console.log('f2 started');
-    delay(1000).then(() => { console.log('f2 finished') });
-
-}
+// }
 
 
-f1();
-f2();
+// function f2() {
+//     console.log('f2 started');
+//     delay(1000).then(() => { console.log('f2 finished') });
+
+// }
+
+
+// f1();
+// f2();
+
+
+//synchro
+// console.log("a");
+// console.log("b");
+// console.log("c");
+// for (i = 0; i < 1_000_000; i++) {
+//     for (j = 0; j < 1_000; j++) {
+//         const a = 1;
+//     }
+// }
+// 
+// console.log("final");
+
+//asynchro
+// console.log("a");
+// console.log("b");
+// console.log("c");
+
+// setTimeout(() => { const a = 1 }, 2500)
+// console.log("final");
