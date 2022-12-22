@@ -8,13 +8,14 @@ let answerBtn = document.getElementById('answer');
 let plusBtn = document.getElementById('plusScore');
 let minusBtn = document.getElementById('minusScore');
 let sumScore = document.querySelector('#score');
+let history = document.querySelector('.history');
 let num;
 let array;
 let slides;
 
 input.addEventListener('change', func);
 function func() {
-    array = shuffle(input.value); 
+    array = shuffle(input.value);
     console.log(array);
     input.disabled = true;
 }
@@ -34,53 +35,76 @@ function genArray() {
     sumScore.style.display = 'block';
 
     // tasks and answers setup
-    let task1 = 'array.shift()';
-    array.shift();
+    let task1 = 'array.pop();';
+    let state1 = `Last state ${[...array]}`;
+    array.pop();
     let answer1 = `Answer:\n[${array}];`;
 
-    let task2 = 'array.pop()';
-    array.pop();
+    let task2 = "array.shift()";
+    let state2 = `Last state ${[...array]}`;
+    array.shift();
     let answer2 = `Answer:\n[${array}];`;
-
-    let task3 = 'array.push("bagsh1")';
-    array.push('bagsh1');
+    
+    let task3 = 'array = array.filter(el => el > 2)';
+    let state3 = `Last state ${[...array]}`;
+    array = array.filter(el => el > 2);
     let answer3 = `Answer:\n[${array}];`;
+    
+    let task4 = 'array = array.map(el => el % 2 === 0).sitDown();';
+    let state4 = `Last state ${[...array]}`;
+    let newFiltered = array.map(element => element % 2 === 0 ? 'sit' : element);
+    let answer4 = `Answer:\n[${newFiltered}];`;
+    
+    let task5 = 'array.slice(' + parseInt(array.length / 2) + ')';
+    let state5 = `Last state ${[...array]}`;
+    array = array.slice(parseInt(array.length / 2));
+    let answer5 = `Answer:\n[${array}];`;
+    
+    let task6 = 'array.reverse()';
+    let state6 = `Last state ${[...array]}`;
+    array.reverse();
+    let answer6 = `Answer:\n[${array}];`;
 
+    
+        
     slides = [
-        {task: task1, answer: answer1},
-        {task: task2, answer: answer2},
-        {task: task3, answer: answer3},
-        {task: 'slide4task', answer: 'slide4answer'},
-        {task: 'slide5task', answer: 'slide5answer'},
+        { task: task1, answer: answer1, state: state1 },
+        { task: task2, answer: answer2, state: state2 },
+        { task: task3, answer: answer3, state: state3 },
+        { task: task4, answer: answer4, state: state4 },
+        { task: task5, answer: answer5, state: state5 },
+        { task: task6, answer: answer6, state: state6 },
     ];
 };
 
 plusBtn.addEventListener('click', addScore)
 function addScore() {
-    score ++;
+    score++;
     sumScore.value = score;
 }
 
 minusBtn.addEventListener('click', minusScore)
 function minusScore() {
-    score --;
+    score--;
     sumScore.value = score;
 }
 
 
 nextBtn.addEventListener('click', goNext);
 function goNext() {
-    
-    if (indexSlide == slides.length) {
-        screenText.innerText = 'Thank you!';
-        stopTimer();
-    } else {
-        screenText.innerText = slides[indexSlide].task;
-        nextBtn.style.display = 'none';
-        answerBtn.style.display = 'block';
-        plusBtn.disabled = true;
-        minusBtn.disabled = true;
-    }
+nextBtn.style.display = 'none';
+
+  if (indexSlide == slides.length) {
+      screenText.innerText = 'Thank you!';
+      stopTimer();
+      history.innerText = '';
+  } else {
+      screenText.innerText = slides[indexSlide].task;
+      answerBtn.style.display = 'block';
+      plusBtn.disabled = true;
+      minusBtn.disabled = true;
+      history.innerText = slides[indexSlide].state;
+  }
 }
 
 answerBtn.addEventListener('click', answerMe);
@@ -89,7 +113,7 @@ function answerMe() {
     nextBtn.style.display = 'block';
     answerBtn.style.display = 'none';
     plusBtn.disabled = false;
-    minusBtn.disabled = false; 
+    minusBtn.disabled = false;
     indexSlide++;
 }
 
@@ -101,15 +125,14 @@ function shuffle(num) {
 
     // Create a new array with input number elements
     let arr = [];
-    for (i = 0; i < num; i++) {
+    for (let i = 0; i < num; i++) {
         arr.push(i);
     }
 
     let currentIndex = arr.length, randomIndex;
-
     // While there remain elements to shuffle.
     while (currentIndex != 0) {
-        
+
         // Pick a remaining element.
         randomIndex = Math.floor(Math.random() * currentIndex);
         currentIndex--;
