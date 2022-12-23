@@ -47,7 +47,7 @@ function stopTimer() {
 
 function resetTimer() {
     clock.innerText = `00 : 00 : 00 : 00`;
-    hr = 0; 
+    hr = 0;
     mn = 0;
     sc = 0;
     ms = 0;
