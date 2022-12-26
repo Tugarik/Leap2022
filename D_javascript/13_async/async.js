@@ -91,21 +91,21 @@ console.log("final");
 
 
 //synchro
-// console.log("a");
-// console.log("b");
-// console.log("c");
-// for (i = 0; i < 1_000_000; i++) {
-//     for (j = 0; j < 1_000; j++) {
-//         const a = 1;
-//     }
-// }
-// 
-// console.log("final");
+console.log("a");
+console.log("b");
+console.log("c");
+for (i = 0; i < 1_000_000; i++) {
+    for (j = 0; j < 1_000; j++) {
+        const a = 1;
+    }
+}
+
+console.log("final");
 
 //asynchro
 // console.log("a");
 // console.log("b");
 // console.log("c");
 
-// setTimeout(() => { const a = 1 }, 2500)
+// setTimeout(() => { console.log("fafter 2.5 sec") }, 2500);
 // console.log("final");

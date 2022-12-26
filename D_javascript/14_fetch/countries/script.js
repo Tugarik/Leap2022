@@ -2,11 +2,14 @@ const form = document.querySelector("form");
 const countriesContainer = document.querySelector(".countries");
 let inputCountry = document.querySelector('.btn-country').value;
 let showBtn = document.querySelector('.submit-btn');
+let neighbours = [];
+let neighbour;
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
-
+    countriesContainer.innerHTML = '';
     getCountry(e.target.country_name.value);
+
 });
 
 // https://restcountries.com/v3.1/name/${country}
@@ -14,12 +17,12 @@ form.addEventListener('submit', (e) => {
 function getCountry(country) {
     fetch(`https://restcountries.com/v3.1/name/${country}`)
         .then(res => res.json())
-        .then((data) => renderCountry(data[0]));
+        .then((data) => { renderCountry(data[0], "searched"); getNeighbours(neighbours); });
 }
 
-function renderCountry(country) {
+function renderCountry(country, className) {
     console.log(country);
-    const html = `<article class="country">
+    const html = `<article class="country ${className}">
     <img class="country__img" src="${country.flags.svg}" />
     <div class="country__data">
       <h3 class="country__name">${country.name.common}</h3>
@@ -29,15 +32,25 @@ function renderCountry(country) {
       <p class="country__row"><span>💰</span>${Object.values(country.currencies)[0].name} : ${Object.values(country.currencies)[0].symbol}</p>
     </div>
     </article> `;
-    countriesContainer.innerHTML = html;
-}
-// getCountry(inputCountry);
+    countriesContainer.innerHTML += html;
+    neighbours = country.borders;
 
-// function show(e) {
-//     e.preventDefault();
-//     console.log(e.target)
-//     // getCountry(inputCountry);
-// }
+}
+
+
+
+function getNeighbours(neighbours) {
+    neighbours.forEach((neighbour) => {
+        console.log(neighbour);
+        fetch(`https://restcountries.com/v3.1/alpha/${neighbour}`)
+            .then(res => res.json())
+            .then((data) => {
+                renderCountry(data[0], "neighbour")
+            });
+
+    })
+}
+
 
 
 
