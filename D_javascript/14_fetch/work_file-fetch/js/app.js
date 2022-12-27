@@ -14,6 +14,7 @@ fetch("https://dog.ceo/api/breeds/list")
     .then((data) => {
         addOption(data.message);
         fetchImage(data.message[0]);
+        console.log(data);
     });
 
 function addOption(breeds) {
@@ -31,4 +32,3 @@ function generateImg(url) {
     let image = `<img src="${url}" alt="breed image">`;
     card.innerHTML = image;
 };
-
