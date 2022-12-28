@@ -16,38 +16,29 @@ class User {
     }
 }
 
-fetch("http://localhost:3333/api/users")
-    .then((res) => res.json())
-    .then((users) => {
-        allUsers = users.map((user) => new User(user.id, user.name, user.surName, user.balance_id, user.balance, user.balance_type));
-        allUsers.map((user) => {
-            table.innerHTML += 
-            `<tr id="${user.id}">
-            <th scope="row">${user.id}</th>
-            <td>${user.name}</td>
-            <td>${user.surName}</td>
-            <td>${user.balance_id}</td>
-            <td class="bg-${getColorByType(user.balance_type)}">${getStringByType(user.balance_type)}</td>
-            <td>${th_sprtr(user.balance)}</td>
-            </tr>`;
-
-        });
-    });
-
-calcBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    if (year.value !== '' && interest_true.value !== '' && interest_false.value !== '') {
-        header.innerHTML += `
-        <th scope="col">Calculated Interest</th>
-        <th scope="col">Calculated Balance</th>
-        `;
-        calcInterest(allUsers);
-    } else {
-        alert('Мэдээлэл оруулна уу');
-    }
-});
+fetchData();
 
 // Functions
+function fetchData() {
+    fetch("http://localhost:3333/api/users")
+        .then((res) => res.json())
+        .then((users) => {
+            
+            allUsers = users.map((user) => new User(user.id, user.name, user.surName, user.balance_id, user.balance, user.balance_type));
+            allUsers.map((user) => {
+                table.innerHTML += 
+                `<tr id="${user.id}">
+                <th scope="row">${user.id}</th>
+                <td>${user.name}</td>
+                <td>${user.surName}</td>
+                <td>${user.balance_id}</td>
+                <td class="bg-${getColorByType(user.balance_type)}">${getStringByType(user.balance_type)}</td>
+                <td>${th_sprtr(user.balance)}</td>
+                </tr>`;
+    
+            });
+        });
+}
 
 function getStringByType(type) {return (type ? 'Хугацаатай' : 'Хугацаагүй');}
 
@@ -70,3 +61,18 @@ function th_sprtr(num) {
     num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, "'");
     return num_parts.join(".");
 }
+
+// Event listeners
+calcBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (year.value !== '' && interest_true.value !== '' && interest_false.value !== '') {
+        const html = `
+        <th class="added" scope="col">Calculated Interest</th>
+        <th class="added" scope="col">Calculated Balance</th>
+        `;
+            header.innerHTML += html;
+            calcInterest(allUsers);
+    } else {
+        alert('Мэдээлэл оруулна уу');
+    }
+});
