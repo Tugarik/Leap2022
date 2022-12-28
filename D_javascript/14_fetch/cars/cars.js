@@ -5,15 +5,15 @@ const screen = document.getElementById('screen');
 const counter = document.getElementById('counter');
 const form = document.querySelector("form");
 const addBtn = document.getElementById('addBtn');
-const addBrand = document.getElementById('addBrand').value;
-const addModel = document.getElementById('addModel').value;
-const addCountry = document.getElementById('addCountry').value;
-const addImage = document.getElementById('addImage').value;
-console.log(typeof addBrand);
+const addBrand = document.getElementById('addBrand');
+const addModel = document.getElementById('addModel');
+const addCountry = document.getElementById('addCountry');
+const addImage = document.getElementById('addImage');
+
 const dropdownBrand = document.getElementById('dropdownBrand');
 const dropdownModel = document.getElementById('dropdownModel');
 const dropdownCountry = document.getElementById('dropdownCountry');
-
+const addForm = document.getElementById('addForm')
 const brands = [];
 const models = [];
 const countries = [];
@@ -26,18 +26,22 @@ form.addEventListener('submit', (e) => {
     genSearch(inputSearch);
 });
 
-addBtn.addEventListener('click', () => {
-    const data = {'model': addModel, 'brand': addBrand, 'country': addCountry, 'image': addImage};
+addForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const data = { model: addModel.value, brand: addBrand.value, country: addCountry.value, image: addImage.value };
+    console.log(data)
     fetch("http://localhost:3333/api/cars", {
         method: 'POST',
-        headers: {'Content-Type': 'application/json'},
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
     }).then(res => res.json())
-    .then(res => console.log('Post Success: ' + res))
-    .catch((error) => {
-        console.error('Post Error:', error);
-    });
+        .then(res => console.log('Post Success: ' + res))
+        .catch((error) => {
+            console.error('Post Error:', error);
+        });
 });
+
+
 
 fetch("http://localhost:3333/api/cars")
     .then((res) => res.json())
@@ -61,39 +65,50 @@ fetch("http://localhost:3333/api/cars")
     })
     .catch((e) => console.log("error: ", e));
 
-function genDropdownBrand (arr) {
+function delCar(id) {
+    fetch("http://localhost:3333/api/cars/" + id, {
+        method: 'DELETE',
+    }).then(res => res.json())
+        .then(res => console.log('Delete Success: ' + res))
+        .catch((error) => {
+            console.error('Delete Error:', error);
+        });
+}
+
+function genDropdownBrand(arr) {
     arr.map((el) => {
-        dropdownBrand.innerHTML += `<li><a class="dropdown-item ${el}" href="#" onclick="genFilter('brand', '${el}')">${el}</a></li>`;   
+        dropdownBrand.innerHTML += `<li><a class="dropdown-item ${el}" href="#" onclick="genFilter('brand', '${el}')">${el}</a></li>`;
     });
 }
 
-function genDropdownModel (arr) {
+function genDropdownModel(arr) {
     arr.map((el) => {
         dropdownModel.innerHTML += `<li><a class="dropdown-item ${el}" href="#" onclick="genFilter('model', '${el}')">${el}</a></li>`;
     });
 }
 
-function genDropdownCountry (arr) {
+function genDropdownCountry(arr) {
     arr.map((el) => {
         dropdownCountry.innerHTML += `<li><a class="dropdown-item ${el}" href="#" onclick="genFilter('country', '${el}')">${el}</a></li>`;
     });
 }
 
-function genFilter (filter, el) {
+function genFilter(filter, el) {
     fetch("http://localhost:3333/api/cars")
         .then((res) => res.json())
         .then((cars) => {
             screen.innerHTML = '';
             let count = 0;
-            cars.map((car) => {               
+            cars.map((car) => {
                 if (car[filter] == el) {
-                    let card = 
-                    `<div class="card" style="width: 18rem;">
+                    let card =
+                        `<div id="${car.id}" class="card" style="width: 18rem;">
                         <img src="${car.image}" class="card-img-top" alt="...">
                         <div class="card-body">
-                        <h5 class="card-title">${car.model}</h5>
-                        <p class="card-text">${car.brand} / ${car.country}</p>
-                        <a href="#" class="btn btn-primary">More Info</a>
+                            <h5 class="card-title">${car.model}</h5>
+                            <p class="card-text">${car.brand} / ${car.country}</p>
+                            <a href="#" id="infoBtn" class="btn btn-primary">More Info</a>
+                            <a href="#" id="delBtn" class="btn btn-primary" onclick="delCar(${car.id})">Delete</a>
                         </div>
                     </div>`;
                     screen.innerHTML += card;
@@ -109,7 +124,6 @@ function genFilter (filter, el) {
         .catch((e) => console.log("error: ", e));
 }
 
-
 function genAll() {
     fetch("http://localhost:3333/api/cars")
         .then((res) => res.json())
@@ -117,14 +131,16 @@ function genAll() {
             screen.innerHTML = '';
             let count = 0;
             cars.map((car) => {
-                let card = `<div class="card" >
-                <img src="${car.image}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">${car.model}</h5>
-                    <p class="card-text">${car.brand} / ${car.country}</p>  
-                    <a href="#" class="btn btn-primary">More Info</a>
-                </div>
-                </div>`;
+                let card =
+                    `<div id="${car.id}" class="card" style="width: 18rem;">
+                        <img src="${car.image}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">${car.model}</h5>
+                            <p class="card-text">${car.brand} / ${car.country}</p>
+                            <a href="#" id="infoBtn" class="btn btn-primary">More Info</a>
+                            <a href="#" id="delBtn" class="btn btn-primary" onclick="delCar(${car.id})">Delete</a>
+                        </div>
+                    </div>`;
                 screen.innerHTML += card;
                 count++;
             })
@@ -135,7 +151,6 @@ function genAll() {
             }
         })
         .catch((e) => console.log("error: ", e));
-
 }
 
 function genSearch(inpSearch) {
@@ -145,20 +160,22 @@ function genSearch(inpSearch) {
             screen.innerHTML = '';
             let count = 0;
             cars.map((car) => {
-                if (car.brand.toLowerCase().includes(inpSearch) 
-                || car.model.toLowerCase().includes(inpSearch) 
-                || car.country.toLowerCase().includes(inpSearch)) {
-                    let card = `<div class="card" style="width: 18rem;">
-                    <img src="${car.image}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">${car.model}</h5>
-                        <p class="card-text">${car.brand} / ${car.country}</p>  
-                        <a href="#" class="btn btn-primary">More Info</a>
-                    </div>
+                if (car.brand.toLowerCase().includes(inpSearch)
+                    || car.model.toLowerCase().includes(inpSearch)
+                    || car.country.toLowerCase().includes(inpSearch)) {
+                    let card =
+                        `<div id="${car.id}" class="card" style="width: 18rem;">
+                        <img src="${car.image}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">${car.model}</h5>
+                            <p class="card-text">${car.brand} / ${car.country}</p>
+                            <a href="#" id="infoBtn" class="btn btn-primary">More Info</a>
+                            <a href="#" id="delBtn" class="btn btn-primary" onclick="delCar(${car.id})">Delete</a>
+                        </div>
                     </div>`;
                     screen.innerHTML += card;
                     count++;
-                } 
+                }
             })
             if (count > 0) {
                 counter.innerHTML = `<div>Search results: ${count} items found for current search.</div>`;

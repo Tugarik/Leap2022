@@ -1,5 +1,7 @@
 const express = require("express");
 const cors = require('cors');
+const bodyParser = require("body-parser")
+const jsonParser = bodyParser.json();
 let cars = [
   {
     id: 0,
@@ -104,14 +106,14 @@ app.get("/api/cars/:id", (req, res) => {
   }
 });
 
-app.post("/api/cars", (req, res) => {
+app.post("/api/cars", jsonParser, (req, res) => {
   const car = { id: index, ...req.body };
   index++;
   cars.push(car);
   res.send(car);
 });
 
-app.delete("/api/cars", (req, res) => {
+app.delete("/api/cars", jsonParser, (req, res) => {
   cars = cars.filter((car) => car.id !== Number(req.body.id));
   res.send(`Car with given id: ${req.body.id} deleted successfully`);
 });
