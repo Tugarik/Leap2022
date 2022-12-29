@@ -26,8 +26,8 @@ form.addEventListener('submit', (e) => {
     genSearch(inputSearch);
 });
 
-addForm.addEventListener('submit', (e) => {
-    e.preventDefault();
+addForm.addEventListener('submit', () => {
+    // e.preventDefault();
     const data = { model: addModel.value, brand: addBrand.value, country: addCountry.value, image: addImage.value };
     console.log(data)
     fetch("http://localhost:3333/api/cars", {
@@ -65,9 +65,13 @@ fetch("http://localhost:3333/api/cars")
     })
     .catch((e) => console.log("error: ", e));
 
-function delCar(id) {
-    fetch("http://localhost:3333/api/cars/" + id, {
+function delCar(inp) {
+    const data = { id: inp, };
+    console.log(data);
+    fetch(`http://localhost:3333/api/cars`, {
         method: 'DELETE',
+        headers: { 'Content-Type': "application/json" },
+        body: JSON.stringify(data),
     }).then(res => res.json())
         .then(res => console.log('Delete Success: ' + res))
         .catch((error) => {
@@ -108,7 +112,7 @@ function genFilter(filter, el) {
                             <h5 class="card-title">${car.model}</h5>
                             <p class="card-text">${car.brand} / ${car.country}</p>
                             <a href="#" id="infoBtn" class="btn btn-primary">More Info</a>
-                            <a href="#" id="delBtn" class="btn btn-primary" onclick="delCar(${car.id})">Delete</a>
+                            <a href="#" id="delBtn" class="btn btn-primary" onclick="delCar('${car.id}')">Delete</a>
                         </div>
                     </div>`;
                     screen.innerHTML += card;
@@ -138,7 +142,7 @@ function genAll() {
                             <h5 class="card-title">${car.model}</h5>
                             <p class="card-text">${car.brand} / ${car.country}</p>
                             <a href="#" id="infoBtn" class="btn btn-primary">More Info</a>
-                            <a href="#" id="delBtn" class="btn btn-primary" onclick="delCar(${car.id})">Delete</a>
+                            <a href="#" id="delBtn" class="btn btn-primary" onclick="delCar('${car.id}')">Delete</a>
                         </div>
                     </div>`;
                 screen.innerHTML += card;
@@ -170,7 +174,7 @@ function genSearch(inpSearch) {
                             <h5 class="card-title">${car.model}</h5>
                             <p class="card-text">${car.brand} / ${car.country}</p>
                             <a href="#" id="infoBtn" class="btn btn-primary">More Info</a>
-                            <a href="#" id="delBtn" class="btn btn-primary" onclick="delCar(${car.id})">Delete</a>
+                            <a href="#" id="delBtn" class="btn btn-primary" onclick="delCar('${car.id}')">Delete</a>
                         </div>
                     </div>`;
                     screen.innerHTML += card;
