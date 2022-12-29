@@ -13,9 +13,8 @@ const inpSelect = document.getElementById('inpSelect');
 const inpBalance = document.getElementById('inpBalance');
 let added = false;
 let addedCalc = false;
-
-let allUsers = [];
-class User {
+let allUsers = []; // Object with imported data
+class User {       // Class constructor of object
     constructor(id, name, surName, balance_id, balance, balance_type) {
         this.id = id;
         this.name = name;
@@ -26,66 +25,53 @@ class User {
     }
 }
 
-fetchData();
-
-// Functions
-function fetchData() {
-    fetch("http://localhost:3333/api/users")
-        .then((res) => res.json())
-        .then((users) => {
-            console.log(users);
-            allUsers = users.map((user) => new User(user.id, user.name, user.surName, user.balance_id, user.balance, user.balance_type));
-            allUsers.map((user) => {
-                table.innerHTML +=
-                    `<tr id="${user.id}">
-                <th scope="row">${user.id}</th>
-                <td>${user.name}</td>
-                <td>${user.surName}</td>
-                <td>${user.balance_id}</td>
-                <td class="bg-${getColorByType(user.balance_type)}">${getStringByType(user.balance_type)}</td>
-                <td>${th_sprtr(user.balance)}</td>
-                
+// Get data from database
+fetch("http://localhost:3333/api/users")
+    .then((res) => res.json())
+    .then((users) => {
+        console.log(users);
+        allUsers = users.map((user) => new User(user.id, user.name, user.surName, user.balance_id, user.balance, user.balance_type));
+        allUsers.map((user) => {
+            table.innerHTML +=
+                `<tr id="${user.id}">
+                    <th scope="row">${user.id}</th>
+                    <td>${user.name}</td>
+                    <td>${user.surName}</td>
+                    <td>${user.balance_id}</td>
+                    <td class="text-${getColorByType(user.balance_type)}">${getStringByType(user.balance_type)}</td>
+                    <td class="text-end">${th_separator(user.balance)}.00</td>
                 </tr>`;
-
-            });
         });
+    });
+
+// Function for calulating interests
+function calcInterest(users) {
+    users.map((user) => {       
+        if (addedCalc == true) {
+            document.querySelectorAll('.tobeDeleted').forEach(() => {document.querySelector('.tobeDeleted').remove();});
+            addedCalc = false;
+        }
+        let interest = user.balance * getInterestByType(user.balance_type) / 100 * year.value;
+        let balance = parseFloat(user.balance) + interest;
+        const html = `<td class="tobeDeleted text-end">${th_separator(interest.toFixed(2))}</td>
+        <td  class="tobeDeleted text-end"> ${th_separator(balance.toFixed(2))}</td>`;
+                
+        document.getElementById(`${user.id}`).innerHTML += html;
+    })
+    addedCalc = true;
 }
 
-function th_sprtr(num) {
+// Function for thousand separator
+function th_separator(num) {
     var num_parts = num.toString().split(".");
     num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, "'");
     return num_parts.join(".");
 }
 
+// Functions for return values depending of type
 function getStringByType(type) { return (type ? 'Term deposit' : 'Demand deposit'); }
-
 function getInterestByType(type) { return (type ? interest_true.value : interest_false.value); }
-
-function getColorByType(type) { return (type ? 'primary' : 'secondary'); }
-
-function calcInterest(users) {
-    users.map((user) => {
-        let interest = user.balance * getInterestByType(user.balance_type) / 100 * year.value;
-        let balance = user.balance + interest;
-        const html = `<td class="tobeDeleted">${th_sprtr(interest)}</td>
-        <td  class="tobeDeleted"> ${th_sprtr(balance)}</td>`;
-        if (addedCalc == true) {
-            console.log('calc added');
-            //remove function
-
-            const elements = document.querySelectorAll('.tobeDeleted');
-            console.log(elements);
-            while (elements.length > 0) {
-                document.getElementById(`${user.id}`).removeChild(elements[0]);
-            }
-
-            addedCalc = false;
-        }
-        document.getElementById(`${user.id}`).innerHTML += html;
-
-    })
-    addedCalc = true;
-}
+function getColorByType(type) { return (type ? 'primary' : 'danger'); }
 
 // Event listeners
 calcBtn.addEventListener('click', (e) => {
@@ -108,7 +94,7 @@ calcBtn.addEventListener('click', (e) => {
 addBtn.addEventListener('click', (e) => {
     e.preventDefault();
     let getSelect = inpSelect.value == 'true' ? true : false;
-    const data = { name: inpFirst.value, surName: inpLast.value, balance_id: inpBalNumber.value, balance_id: getSelect, balance: inpBalance.value };
+    const data = { name: inpFirst.value, surName: inpLast.value, balance_id: inpBalNumber.value, balance_type: getSelect, balance: inpBalance.value };
     fetch("http://localhost:3333/api/users", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -121,22 +107,23 @@ addBtn.addEventListener('click', (e) => {
         });
 });
 
-const getCellValue = (tr, idx) => tr.children[idx].innerText || tr.children[idx].textContent;
+// Sorting a table by headers
+// const getCellValue = (tr, idx) => tr.children[idx].innerText || tr.children[idx].textContent;
 
-const comparer = (idx, asc) => (a, b) => ((v1, v2) =>
-    v1 !== '' && v2 !== '' && !isNaN(v1) && !isNaN(v2) ? v1 - v2 : v1.toString().localeCompare(v2)
-)(getCellValue(asc ? a : b, idx), getCellValue(asc ? b : a, idx));
+// const comparer = (idx, asc) => (a, b) => ((v1, v2) =>
+//     v1 !== '' && v2 !== '' && !isNaN(v1) && !isNaN(v2) ? v1 - v2 : v1.toString().localeCompare(v2)
+// )(getCellValue(asc ? a : b, idx), getCellValue(asc ? b : a, idx));
 
-// do the work...
-document.querySelectorAll('th').forEach(th => th.addEventListener('click', (() => {
-    const table = th.closest('table');
-    Array.from(table.querySelectorAll('tr:nth-child(n+2)'))
-        .sort(comparer(Array.from(th.parentNode.children).indexOf(th), this.asc = !this.asc))
-        .forEach(tr => table.appendChild(tr));
-})));
+// // do the work...
+// document.querySelectorAll('th').forEach(th => th.addEventListener('click', (() => {
+//     const table = th.closest('table');
+//     Array.from(table.querySelectorAll('tr:nth-child(n+2)'))
+//         .sort(comparer(Array.from(th.parentNode.children).indexOf(th), this.asc = !this.asc))
+//         .forEach(tr => table.appendChild(tr));
+// })));
 
 // function sortTable(n) {
-//     var table, rows, switching, i, x, y, shouldSwitch;
+//     let table, rows, switching, i, x, y, shouldSwitch;
 //     table = document.getElementById("myTable");
 //     switching = true;
 //     /*Make a loop that will continue until
