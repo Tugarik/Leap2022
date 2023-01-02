@@ -1,15 +1,12 @@
 function sumSq(n) {
   let m = 1 + Math.pow(n, 2);
-  let l = 16;
+  let l = (n / 2 - 1) * 4;
   let sum = m;
 
-  for (let i = 0; i < n / 2; i++) {
-    console.log(m);
-    console.log(l);
-    console.log(m - l);
+  for (let i = n / 2; i <= 0; i--) {
     l = m - l;
     sum += l;
-    console.log(sum);
+    // console.log(sum);
   }
   return sum;
 }
@@ -18,7 +15,7 @@ function sqSum(n) {
   return Math.pow(((1 + n) * n) / 2, 2);
 }
 
-console.log(sqSum(100));
+console.log(sqSum(10));
 console.log(sumSq(10));
 
 //1-10  1+100  101  16

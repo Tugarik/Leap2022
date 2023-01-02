@@ -46,16 +46,16 @@ fetch("http://localhost:3333/api/users")
 
 // Function for calulating interests
 function calcInterest(users) {
-    users.map((user) => {       
+    users.map((user) => {
         if (addedCalc == true) {
-            document.querySelectorAll('.tobeDeleted').forEach(() => {document.querySelector('.tobeDeleted').remove();});
+            document.querySelectorAll('.tobeDeleted').forEach(() => { document.querySelector('.tobeDeleted').remove(); });
             addedCalc = false;
         }
         let interest = user.balance * getInterestByType(user.balance_type) / 100 * year.value;
         let balance = parseFloat(user.balance) + interest;
         const html = `<td class="tobeDeleted text-end">${th_separator(interest.toFixed(2))}</td>
         <td  class="tobeDeleted text-end"> ${th_separator(balance.toFixed(2))}</td>`;
-                
+
         document.getElementById(`${user.id}`).innerHTML += html;
     })
     addedCalc = true;
@@ -106,6 +106,16 @@ addBtn.addEventListener('click', (e) => {
             console.error('Post Error:', error);
         });
 });
+
+
+
+
+
+
+
+
+
+
 
 // Sorting a table by headers
 // const getCellValue = (tr, idx) => tr.children[idx].innerText || tr.children[idx].textContent;
